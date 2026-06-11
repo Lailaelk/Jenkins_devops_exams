@@ -6,11 +6,11 @@ metadata:
     {{- include "fastapiapp.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
+  selector:
+    {{- include "fastapiapp.selectorLabels" . | nindent 4 }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.targetPort }}
-      nodePort: {{ .Values.service.nodePort }}
       protocol: TCP
       name: http
-  selector:
-    {{- include "fastapiapp.selectorLabels" . | nindent 4 }}
+      nodePort: {{ .Values.service.nodePort }}
