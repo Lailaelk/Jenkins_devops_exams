@@ -10,7 +10,8 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/Lailaelk/Jenkins_devops_exams.git'
+                git branch: 'master',
+                    url: 'https://github.com/Lailaelk/Jenkins_devops_exams.git'
             }
         }
 
@@ -50,7 +51,7 @@ pipeline {
         }
 
         stage('Deploy DEV') {
-            when { branch "main" }
+            when { branch "master" }
             steps {
                 sh """
                 helm upgrade --install app-dev ./charts \
@@ -63,7 +64,7 @@ pipeline {
         }
 
         stage('Deploy QA') {
-            when { branch "main" }
+            when { branch "master" }
             steps {
                 sh """
                 helm upgrade --install app-qa ./charts \
@@ -76,7 +77,7 @@ pipeline {
         }
 
         stage('Deploy STAGING') {
-            when { branch "main" }
+            when { branch "master" }
             steps {
                 sh """
                 helm upgrade --install app-staging ./charts \
@@ -89,14 +90,14 @@ pipeline {
         }
 
         stage('Approval for Production') {
-            when { branch "main" }
+            when { branch "master" }
             steps {
                 input message: "⚠️ Deploy to PRODUCTION? Manual approval required."
             }
         }
 
         stage('Deploy PROD') {
-            when { branch "main" }
+            when { branch "master" }
             steps {
                 sh """
                 helm upgrade --install app-prod ./charts \
