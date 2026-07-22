@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: movie-service
+  labels:
+    app: movie-service
+
+spec:
+  selector:
+    app: movie-service
+
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
+      protocol: TCP
+
+  type: ClusterIP

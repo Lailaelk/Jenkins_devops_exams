@@ -2,21 +2,30 @@
 
 replicaCount: 3
 
-image:
-  repository: sajjadhz/fastapiapp
-  pullPolicy: IfNotPresent
-  tag: "latest"
+movieService:
+  image:
+    repository: lolaelk/movie-service
+    pullPolicy: IfNotPresent
+    tag: "latest"
 
-imagePullSecrets:
-  - name: "regcred"
+castService:
+  image:
+    repository: lolaelk/cast-service
+    pullPolicy: IfNotPresent
+    tag: "latest"
+
+
+imagePullSecrets: []
 
 nameOverride: ""
 fullnameOverride: ""
+
 
 serviceAccount:
   create: true
   annotations: {}
   name: ""
+
 
 podAnnotations: {}
 
@@ -24,22 +33,43 @@ podSecurityContext: {}
 
 securityContext: {}
 
-# ⚠️ IMPORTANT : pas de nodePort ici (sinon conflit entre environnements)
-service:
-  type: NodePort
-  port: 80
-  targetPort: 8000
+
+# Services Kubernetes
+movie:
+  service:
+    type: ClusterIP
+    port: 8000
+
+
+cast:
+  service:
+    type: ClusterIP
+    port: 8000
+
+
+# Variables d'environnement
+movieEnvironment:
+  DATABASE_URI: postgresql://movie_db_username:movie_db_password@movie_db/movie_db_dev
+  CAST_SERVICE_HOST_URL: http://cast-service:8000/api/v1/casts/
+
+
+castEnvironment:
+  DATABASE_URI: postgresql://cast_db_username:cast_db_password@cast_db/cast_db_dev
+
 
 ingress:
   enabled: false
   className: ""
   annotations: {}
+
   hosts:
     - host: chart-example.local
       paths:
         - path: /
           pathType: ImplementationSpecific
+
   tls: []
+
 
 resources: {}
 
@@ -48,6 +78,7 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
+
 
 nodeSelector: {}
 
