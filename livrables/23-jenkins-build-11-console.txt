@@ -1,0 +1,314 @@
+Started by user Lola elk
+Obtained Jenkinsfile from git https://github.com/Lailaelk/Jenkins_devops_exams.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/devops-exam-pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/devops-exam-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Lailaelk/Jenkins_devops_exams.git # timeout=10
+Fetching upstream changes from https://github.com/Lailaelk/Jenkins_devops_exams.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/Lailaelk/Jenkins_devops_exams.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision a5115feccad775e9390387cc995489d59b95808c (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a5115feccad775e9390387cc995489d59b95808c # timeout=10
+Commit message: "Fix Kubernetes database service names"
+ > git rev-list --no-walk a5115feccad775e9390387cc995489d59b95808c # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout Code)
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/devops-exam-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Lailaelk/Jenkins_devops_exams.git # timeout=10
+Fetching upstream changes from https://github.com/Lailaelk/Jenkins_devops_exams.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/Lailaelk/Jenkins_devops_exams.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision a5115feccad775e9390387cc995489d59b95808c (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a5115feccad775e9390387cc995489d59b95808c # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master a5115feccad775e9390387cc995489d59b95808c # timeout=10
+Commit message: "Fix Kubernetes database service names"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Images)
+[Pipeline] sh
++ echo Building Movie Service image...
+Building Movie Service image...
++ docker build -t lolaelk/movie-service:11 ./movie-service
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 352B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.8-slim
+#2 ...
+
+#3 [auth] library/python:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.8-slim
+#2 DONE 0.6s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [1/6] FROM docker.io/library/python:3.8-slim@sha256:1d52838af602b4b5a831beb13a0e4d073280665ea7be7f69ce2382f29c5a613f
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 5.28kB 0.0s done
+#6 DONE 0.0s
+
+#7 [2/6] WORKDIR /app
+#7 CACHED
+
+#8 [4/6] RUN apt-get update     && apt-get install gcc -y     && apt-get clean
+#8 CACHED
+
+#9 [5/6] RUN pip install -r /app/requirements.txt     && rm -rf /root/.cache/pip
+#9 CACHED
+
+#10 [3/6] COPY ./requirements.txt /app/requirements.txt
+#10 CACHED
+
+#11 [6/6] COPY . /app/
+#11 CACHED
+
+#12 exporting to image
+#12 exporting layers done
+#12 writing image sha256:aee8fdce57e60d4b17d363b06e5cb8b09096fce6e02988d649176b71035ea1cd done
+#12 naming to docker.io/lolaelk/movie-service:11 0.0s done
+#12 DONE 0.0s
++ echo Building Cast Service image...
+Building Cast Service image...
++ docker build -t lolaelk/cast-service:11 ./cast-service
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 352B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.8-slim
+#2 DONE 0.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/6] FROM docker.io/library/python:3.8-slim@sha256:1d52838af602b4b5a831beb13a0e4d073280665ea7be7f69ce2382f29c5a613f
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 2.96kB 0.0s done
+#5 DONE 0.0s
+
+#6 [4/6] RUN apt-get update     && apt-get install gcc -y     && apt-get clean
+#6 CACHED
+
+#7 [2/6] WORKDIR /app
+#7 CACHED
+
+#8 [3/6] COPY ./requirements.txt /app/requirements.txt
+#8 CACHED
+
+#9 [5/6] RUN pip install -r /app/requirements.txt     && rm -rf /root/.cache/pip
+#9 CACHED
+
+#10 [6/6] COPY . /app/
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 writing image sha256:fb83b96e315c7f29b926f9a2dc894b3c103dab48131f7f92cd25c9803140a568 done
+#11 naming to docker.io/lolaelk/cast-service:11 0.0s done
+#11 DONE 0.0s
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Login DockerHub)
+[Pipeline] withCredentials
+Masking supported pattern matches of $DOCKER_PASSWORD
+[Pipeline] {
+[Pipeline] sh
++ echo ****
++ docker login -u lolaelk --password-stdin
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push Docker Images)
+[Pipeline] sh
++ docker push lolaelk/movie-service:11
+The push refers to repository [docker.io/lolaelk/movie-service]
+d0ce72e44b11: Preparing
+5a2f9869154b: Preparing
+422b1332db47: Preparing
+1725ff7a970b: Preparing
+269bb2544dc6: Preparing
+d2a2207b52a4: Preparing
+5d2d143f3d7f: Preparing
+c3772b569c3a: Preparing
+8d853c8add5d: Preparing
+d2a2207b52a4: Waiting
+5d2d143f3d7f: Waiting
+c3772b569c3a: Waiting
+8d853c8add5d: Waiting
+422b1332db47: Layer already exists
+1725ff7a970b: Layer already exists
+269bb2544dc6: Layer already exists
+d0ce72e44b11: Layer already exists
+5a2f9869154b: Layer already exists
+5d2d143f3d7f: Layer already exists
+c3772b569c3a: Layer already exists
+d2a2207b52a4: Layer already exists
+8d853c8add5d: Layer already exists
+11: digest: sha256:feba3622d9f9f6547319d2000e34d45df16ea6b578f812b53155ffe10ffb1f4b size: 2205
++ docker push lolaelk/cast-service:11
+The push refers to repository [docker.io/lolaelk/cast-service]
+7b66a449456e: Preparing
+65fb91ffa1b8: Preparing
+c73c248f2693: Preparing
+782c0e7e18b1: Preparing
+269bb2544dc6: Preparing
+d2a2207b52a4: Preparing
+5d2d143f3d7f: Preparing
+c3772b569c3a: Preparing
+8d853c8add5d: Preparing
+d2a2207b52a4: Waiting
+5d2d143f3d7f: Waiting
+c3772b569c3a: Waiting
+8d853c8add5d: Waiting
+7b66a449456e: Layer already exists
+782c0e7e18b1: Layer already exists
+65fb91ffa1b8: Layer already exists
+c73c248f2693: Layer already exists
+269bb2544dc6: Layer already exists
+d2a2207b52a4: Layer already exists
+c3772b569c3a: Layer already exists
+5d2d143f3d7f: Layer already exists
+8d853c8add5d: Layer already exists
+11: digest: sha256:5f12ed97266e06711c16d9472a91411b7175a3190559a0f089b9eb1b7aca28b2 size: 2205
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Create Kubernetes Namespaces)
+[Pipeline] sh
++ kubectl create namespace dev
+Error from server (AlreadyExists): namespaces "dev" already exists
++ true
++ kubectl create namespace qa
+Error from server (AlreadyExists): namespaces "qa" already exists
++ true
++ kubectl create namespace staging
+Error from server (AlreadyExists): namespaces "staging" already exists
++ true
++ kubectl create namespace prod
+Error from server (AlreadyExists): namespaces "prod" already exists
++ true
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy DEV)
+[Pipeline] sh
++ helm upgrade --install app-dev ./charts -n dev -f charts/values-dev.yaml --set movie.image.tag=11 --set cast.image.tag=11
+Release "app-dev" has been upgraded. Happy Helming!
+NAME: app-dev
+LAST DEPLOYED: Thu Aug 27 14:16:54 2026
+NAMESPACE: dev
+STATUS: deployed
+REVISION: 7
+TEST SUITE: None
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy QA)
+[Pipeline] sh
++ helm upgrade --install app-qa ./charts -n qa -f charts/values-qa.yaml --set movie.image.tag=11 --set cast.image.tag=11
+Release "app-qa" has been upgraded. Happy Helming!
+NAME: app-qa
+LAST DEPLOYED: Thu Aug 27 14:16:56 2026
+NAMESPACE: qa
+STATUS: deployed
+REVISION: 4
+TEST SUITE: None
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy STAGING)
+[Pipeline] sh
++ helm upgrade --install app-staging ./charts -n staging -f charts/values-staging.yaml --set movie.image.tag=11 --set cast.image.tag=11
+Release "app-staging" has been upgraded. Happy Helming!
+NAME: app-staging
+LAST DEPLOYED: Thu Aug 27 14:16:57 2026
+NAMESPACE: staging
+STATUS: deployed
+REVISION: 4
+TEST SUITE: None
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Approval for Production)
+[Pipeline] input
+Deploy to Production?
+Deploy or Abort
+Approved by Lola elk
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy PROD)
+[Pipeline] sh
++ helm upgrade --install app-prod ./charts -n prod -f charts/values-prod.yaml --set movie.image.tag=11 --set cast.image.tag=11
+Release "app-prod" does not exist. Installing it now.
+NAME: app-prod
+LAST DEPLOYED: Thu Aug 27 15:56:47 2026
+NAMESPACE: prod
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+✅ Pipeline completed successfully
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

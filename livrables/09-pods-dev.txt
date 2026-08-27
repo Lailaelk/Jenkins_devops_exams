@@ -1,0 +1,11 @@
+NAME                             READY   STATUS             RESTARTS          AGE    IP           NODE               NOMINATED NODE   READINESS GATES
+cast-db-7d9f9c6bc7-nzwnr         1/1     Running            0                 3h4m   10.42.3.35   ip-172-31-40-117   <none>           <none>
+cast-service-687d568c59-lp4k8    0/1     CrashLoopBackOff   40 (3m7s ago)     3h2m   10.42.3.55   ip-172-31-40-117   <none>           <none>
+cast-service-687d568c59-slrwv    0/1     CrashLoopBackOff   40 (4m17s ago)    3h4m   10.42.3.36   ip-172-31-40-117   <none>           <none>
+cast-service-747f9695cc-cd6jt    0/1     CrashLoopBackOff   333 (4m25s ago)   37d    10.42.3.29   ip-172-31-40-117   <none>           <none>
+cast-service-747f9695cc-p9mts    0/1     CrashLoopBackOff   333 (3m37s ago)   37d    10.42.3.22   ip-172-31-40-117   <none>           <none>
+movie-db-876cb9d89-7mktp         1/1     Running            0                 3h4m   10.42.3.37   ip-172-31-40-117   <none>           <none>
+movie-service-5f8f6bc6bf-cmjxl   0/1     CrashLoopBackOff   40 (4m ago)       3h4m   10.42.3.38   ip-172-31-40-117   <none>           <none>
+movie-service-5f8f6bc6bf-mrsss   0/1     CrashLoopBackOff   38 (2m56s ago)    173m   10.42.3.56   ip-172-31-40-117   <none>           <none>
+movie-service-85c786f995-w62lp   0/1     CrashLoopBackOff   333 (3m51s ago)   37d    10.42.3.27   ip-172-31-40-117   <none>           <none>
+movie-service-85c786f995-wbr6k   0/1     CrashLoopBackOff   333 (3m24s ago)   37d    10.42.3.23   ip-172-31-40-117   <none>           <none>

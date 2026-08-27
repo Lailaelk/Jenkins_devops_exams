@@ -1,0 +1,2 @@
+origin	https://github.com/Lailaelk/Jenkins_devops_exams.git (fetch)
+origin	https://github.com/Lailaelk/Jenkins_devops_exams.git (push)

@@ -1,0 +1,9 @@
+NAME              STATUS   AGE
+default           Active   370d
+dev               Active   38d
+kube-node-lease   Active   370d
+kube-public       Active   370d
+kube-system       Active   370d
+prod              Active   38d
+qa                Active   38d
+staging           Active   38d

@@ -1,0 +1,5 @@
+NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+cast-db         ClusterIP   10.43.232.217   <none>        5432/TCP   3h4m
+cast-service    ClusterIP   10.43.70.166    <none>        8000/TCP   3h4m
+movie-db        ClusterIP   10.43.252.188   <none>        5432/TCP   3h4m
+movie-service   ClusterIP   10.43.35.12     <none>        8000/TCP   3h4m

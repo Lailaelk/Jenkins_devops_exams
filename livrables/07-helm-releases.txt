@@ -1,0 +1,7 @@
+NAME       	NAMESPACE  	REVISION	UPDATED                                	STATUS  	CHART                      	APP VERSION
+app-dev    	dev        	7       	2026-08-27 14:16:54.624008119 +0000 UTC	deployed	fastapiapp-0.1.0           	latest     
+app-prod   	prod       	1       	2026-08-27 15:56:47.639642144 +0000 UTC	deployed	fastapiapp-0.1.0           	latest     
+app-qa     	qa         	4       	2026-08-27 14:16:56.039005233 +0000 UTC	deployed	fastapiapp-0.1.0           	latest     
+app-staging	staging    	4       	2026-08-27 14:16:57.377249905 +0000 UTC	deployed	fastapiapp-0.1.0           	latest     
+traefik    	kube-system	1       	2025-08-22 13:21:36.752828144 +0000 UTC	deployed	traefik-34.2.1+up34.2.0    	v3.3.2     
+traefik-crd	kube-system	1       	2025-08-22 13:21:32.507591353 +0000 UTC	deployed	traefik-crd-34.2.1+up34.2.0	v3.3.2     
